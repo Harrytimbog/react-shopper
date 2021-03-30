@@ -7,6 +7,7 @@ import Product from "./pages/Product";
 import { loadStripe } from '@stripe/stripe-js'
 import { CartProvider } from 'use-shopping-cart';
 import { Toaster } from 'react-hot-toast';
+import Navbar from "./components/Navbar";
 
 const queryClient = new QueryClient();
 
@@ -21,12 +22,13 @@ function App() {
       currency="USD"
     >
     <BrowserRouter>
-    <Toaster position = "bottom-center" />
-      <Switch>
-      <Route exact path="/" component={Home} />
-      <Route path="/result" component={Result} />
-      <Route path="/:productId" component={Product} />
-      </Switch>
+    <Navbar />
+      <Toaster position = "bottom-center" />
+        <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/result" component={Result} />
+        <Route path="/:productId" component={Product} />
+        </Switch>
     </BrowserRouter>
     </CartProvider>
     </QueryClientProvider>
