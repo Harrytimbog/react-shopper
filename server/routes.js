@@ -8,6 +8,8 @@ module.exports = function getRoutes() {
   router.get('/products', getProducts);
   router.get('/products/:productId', getProduct);
 
+  router.post('/checkout-sessions', createCheckoutSession)
+
   return router;
 
   function getProducts(req, res) {
@@ -27,3 +29,7 @@ module.exports = function getRoutes() {
     res.status(200).json({ product });
   }
 };
+
+function createCheckoutSession () {
+
+}
