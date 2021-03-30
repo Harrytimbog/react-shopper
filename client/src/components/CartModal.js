@@ -2,7 +2,7 @@
 import React from "react";
 import Modal from "react-modal";
 import { useShoppingCart } from "use-shopping-cart";
-import useCheckout from "utils/useCheckout";
+import useCheckout from "../utils/useCheckout";
 import CartItem from "./CartItem";
 
 Modal.setAppElement("#root");
