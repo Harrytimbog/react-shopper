@@ -1,15 +1,22 @@
 import React from "react";
 import axios from "axios";
 import { Link } from  'react-router-dom';
+import { useQuery } from  'react-query';
+import LoadingSpinner from "../components/LoadingSpinner";
+
 
 export default function ProductList() {
-  const [products, setProducts] = React.useState([]);
+  const { data: products, isLoading } = useQuery('Products', () => axios('/api/products').then((res) => res.data.products));
 
-  React.useEffect(() => {
-    axios.get('/api/products')
-      .then(res => res.data.products)
-      .then(products => setProducts(products))
-  }, []);
+  if (isLoading) return <LoadingSpinner />
+
+ // const [products, setProducts] = React.useState([]);
+
+ // React.useEffect(() => {
+ //   axios.get('/api/products')
+ //     .then(res => res.data.products)
+ //     .then(products => setProducts(products))
+ // }, []);
 
   return products.map((product) => (
     <ProductItem key={product.id} product={product} />
